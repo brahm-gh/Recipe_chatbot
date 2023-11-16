@@ -1,7 +1,14 @@
-import * as ReactDOM from 'react-dom/client';
-import Chatbot from './Chatbot';
-import "./index.css"
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
 
-const container = document.getElementById('chatbot');
-const cb = ReactDOM.createRoot(container);
-cb.render(<Chatbot />)
+ReactDOM.render(<App />, document.getElementById('root'));
+
+// To enhance your app's offline functionality and improve loading speed,
+// consider changing unregister() to register() below.
+// However, be aware that this choice has some potential drawbacks.
+// For a deeper understanding of service workers,
+// explore further: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
