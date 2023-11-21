@@ -1,0 +1,133 @@
+import React, {useEffect, useState} from "react";
+import "../images/style.css";
+import Header from "./Header";
+import InputSection from "./InputSection";
+import MessageSection from "./MessageSection";
+import Sidebar from "./Sidebar";
+import io from 'socket.io-client';
+
+import RightMessage from "./Right_message";
+import LeftMessage from "./Left_message";
+
+const socket = io();
+const Chatbot = () => {
+
+    const [messages, setMessage] = useState([])
+    const [theme, setTheme] = useState('Light');
+    const [area, setArea] = useState('msg_sec');
+
+    const [update, setUpdate] = useState('https://upload.wikimedia.org/wikipedia/commons/b/bc/Refresh_icon.png');
+
+    const greetingMessage = {
+        info: "Hey, Welcome to Recipe Selection System, Say Hi to start chat?",
+        date: getCurrentTime(),
+        type: "left",
+        name: "FoodWhizz Bot"
+    };
+    useEffect(() => {
+        setMessage([greetingMessage]);
+    }, []);
+
+    function handleButtonClick() {
+
+        const head = document.getElementById("head");
+        const input = document.getElementById("input");
+        const input_area = document.getElementById("input_area");
+        const container = document.getElementById("container");
+        const body = document.getElementsByTagName("body")[0];
+        const bar = document.getElementById("sidebar");
+        const labels = document.getElementsByTagName("ul")[0];
+        if (theme === 'light'){
+            setTheme('dark');
+            setUpdate("https://upload.wikimedia.org/wikipedia/commons/3/38/Solid_white_bordered.png");
+            setArea('msg_sec black');
+            head.style.background = '#010507';
+            head.style.color = '#ffffff';
+            head.style.borderBottom = '3px solid black';
+            input.style.background = '#010507';
+            input.style.borderTop = '3px solid black';
+            input_area.style.background = 'black';
+            input_area.style.color = 'white';
+            input_area.classList.toggle("placeholder-white");
+            body.style.background = 'linear-gradient(135deg, #000102 0%, #173146 100%)';
+            container.style.border = '3px solid black';
+            container.style.backgroundColor = '#010507';
+            bar.style.color = 'black';
+            labels.style.color = 'black';
+        }
+        else {
+            setTheme('light');
+            setUpdate("https://upload.wikimedia.org/wikipedia/commons/b/bc/Refresh_icon.png");
+            setArea('msg_sec');
+            head.style.background = '#d0d0d0';
+            head.style.color = '#5b5b5b';
+            head.style.borderBottom = '3px solid white';
+            input.style.background = '#d0d0d0';
+            input.style.borderTop = '3px solid white';
+            input_area.style.background = 'white';
+            input_area.style.color = '#5b5b5b';
+            input_area.classList.remove("placeholder-white");
+            body.style.background = 'linear-gradient(135deg, #a7acad 0%, #bac5cc 100%)';
+            container.style.border = '3px solid white';
+            container.style.backgroundColor = '#d0d0d0';
+            bar.style.color = 'white';
+            labels.style.color = 'white';
+        }
+
+    };
+
+    function AddMes(value_info, value_type) {
+        var new_mes_right = Create(value_info, value_type, "User");
+        setMessage([...messages, new_mes_right]);
+
+        socket.emit('human', value_info)
+        socket.on('botmes', (dat) =>{
+            const new_mes = Create(data, "left", "Bot");
+            setMessages([...messages,new_mes_right,new_mes]);
+        })
+    }
+
+    function getCurrentTime() {
+        const date = new Date();
+        const hours = date.getHours().toString().padStart(2, '0');
+        const minutes = date.getMinutes().toString().padStart(2, '0');
+        return `${hours}:${minutes}`;
+    }
+
+    function Create(value_info, value_type, name){
+        let date = new Date();
+        let minutes = date.getMinutes().toString();
+        if (date.getMinutes() < 10){
+            minutes = "0" + minutes.toString();
+        }
+        return(
+            {
+                info: value_info,
+                date: date.getHours().toString() + ":" + minutes,
+                type: value_type,
+                name: name
+            }
+        )
+
+    }
+
+    function Update() {
+        setMessage([greetingMessage])
+    }
+
+    return (
+        <div>
+            <input className="down_button" id="top-box" type="checkbox" hidden></input>
+            <label className="down_label" htmlFor="top-box"></label>
+            <Sidebar func={handleButtonClick}/>
+            <div className="main" id="container">
+                <Header update={Update} button={update}/>
+                <MessageSection messages={messages} area={area}/>
+                <InputSection send_button={AddMes}/>
+            </div>
+            <footer>&copy; Copyright 2023</footer>
+        </div>
+    );
+};
+
+export default Chatbot;
