@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import "../styles/style.css";
 import Header from "./Header";
-import InputArea from "./Input_area";
-import MessageArea from "./Message_Area";
+import InputArea from "./InputSection";
+import MessageArea from "./MessageSection";
 import Sidebar from "./Sidebar";
 import io from 'socket.io-client';
 
-import RightMessage from "./Right_message";
-import LeftMessage from "./Left_message";
+import RightMessage from "./RightMessage";
+import LeftMessage from "./LeftMessage";
 
 const socket = io();
 const ChatbotComponent = () => {
@@ -21,7 +21,7 @@ const ChatbotComponent = () => {
     const[update, setUpdate] = useState("reload.png");
 
     const greetingMessage = {
-        info: "Hey, Welcome to Recipe Selection System, Say Hi to start chat?",
+        info: "Hey, Welcome to FoodWhizz, what would you like to have today? Say Hey to start...",
         date: getCurrentTime(),
         type: "left",
         name: "FoodWhizz"
