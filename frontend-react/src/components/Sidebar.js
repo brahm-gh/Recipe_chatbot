@@ -27,7 +27,6 @@ const Sidebar = (props) => {
                 </button>
             </ul>
             <p id="text"> Welcome to the Recipe Bot WebPage.
-                This bot is made to help you have proper recipes for the food you would love to have.
             </p>
         </div>
     );
