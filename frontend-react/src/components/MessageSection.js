@@ -1,35 +1,41 @@
-import React, {useEffect, useRef} from 'react';
-import LeftMessage from "./LeftMessage";
-import RightMessage from "./RightMessage";
+import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
+import TextMessage from "./TextMessage";
 import '../styles/style.css';
 
-const MessageArea = (props) => {
-
-    const End = useRef(null)
+const MessageSection = (props) => {
+    const { area, messages } = props;
+    const End = useRef(null);
 
     useEffect(() => {
-        if(props.messages.length > 0) {
+        if (messages.length > 0) {
             scrollToBottom();
         }
-        })
+    }, [messages]);
 
     function scrollToBottom() {
-        End.current.scrollIntoView({behavior: "smooth"})
+        End.current.scrollIntoView({ behavior: "smooth" });
     }
 
     return (
-        <div className={props.area}>
-            {props.messages.map(mes => {
-                switch (mes.type) {
-                    case "right":
-                        return <RightMessage right_message={mes}/>;
-                    case "left":
-                        return <LeftMessage left_message={mes}/>;
-                }
-            })}
+        <div className={area}>
+            {messages.map((mes) => (
+                <TextMessage key={mes.id} message={mes} side={mes.type} />
+            ))}
             <div ref={End}></div>
         </div>
     );
 };
 
-export default MessageArea;
+MessageSection.propTypes = {
+    area: PropTypes.string.isRequired,
+    messages: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            type: PropTypes.oneOf(['left', 'right']).isRequired,
+            // Add other message properties here
+        })
+    ).isRequired,
+};
+
+export default MessageSection;
