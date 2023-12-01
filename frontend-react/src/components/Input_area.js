@@ -12,6 +12,7 @@ const InputArea = (props) => {
         }
     };
 
+    // Function to handle sending messages
     function HandleSend(){
         if (value !== "") {
             props.send_button(value, "right");

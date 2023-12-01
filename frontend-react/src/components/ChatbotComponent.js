@@ -31,9 +31,8 @@ const ChatbotComponent = () => {
         setMessages([greetingMessage]);
       }, []);
 
-
-
-    function handleButtonClick(){
+    // Function to handle theme button click
+    function handleThemeButtonClick(){
 
         const head = document.getElementById("head");
         const input = document.getElementById("input");
@@ -80,19 +79,19 @@ const ChatbotComponent = () => {
         }
     };
 
-    function AddMes(value_info, value_type){
-        var new_mes_right = Create(value_info, value_type, "User");
-        setMessages([...messages, new_mes_right]);
+    // Function to add user and bot messages
+    function addMessage(value_info, value_type){
+        const newUserMessage = createMessage(value_info, value_type, "User");
+        setMessages([...messages, newUserMessage]);
         
         socket.emit('human',value_info)
         socket.on('botmes',(data) =>{
-            const new_mes = Create(data, "left", "Bot");
-            setMessages([...messages,new_mes_right,new_mes]);
+            const newBotMessage = createMessage(data, "left", "Bot");
+            setMessages([...messages,newUserMessage,newBotMessage]);
         })
-       
-        
-        
     }
+
+    // Function to get current time 
     function getCurrentTime() {
         const date = new Date();
         const hours = date.getHours().toString().padStart(2, '0');
@@ -100,9 +99,8 @@ const ChatbotComponent = () => {
         return `${hours}:${minutes}`;
       }
 
-
-
-    function Create(value_info, value_type, name){
+    // Function to create a message object
+    function createMessage(value_info, value_type, name){
         let date = new Date();
         let minutes = date.getMinutes().toString();
         if (date.getMinutes() < 10){
@@ -118,6 +116,8 @@ const ChatbotComponent = () => {
         )
 
     }
+
+    // Function to update messages 
     function Update(){
         setMessages([greetingMessage])
     }
@@ -126,13 +126,13 @@ const ChatbotComponent = () => {
         <div>
             <input className="down_button" id="top-box" type="checkbox" hidden></input>
             <label className="down_label" htmlFor="top-box"></label>
-            <Sidebar func={handleButtonClick} />
+            <Sidebar themeButtonClick={handleThemeButtonClick} />
             <div className="main" id="container">
                 <Header update={Update} button={update} />
                 <MessageArea messages={messages} area={area} />
-                <InputArea send_button={AddMes} />
+                <InputArea send_button={addMessage} />
             </div>
-            <footer>&copy; Copyright 2023</footer>
+            <footer>&copy; Copyright 2024</footer>
         </div>
     );
 };

@@ -7,32 +7,29 @@ function addText(text_for_sidebar) {
 }
 
 const Sidebar = (props) => {
-
     return (
         <div id="sidebar">
             <ul>
                 <li>
-                    <button className="bar" id="home">Home</button>
-                </li>
-                <li>
-                    <button className="bar"
-                            onClick={() => addText("Welcome to Recipe Bot WebPage." +
-                            "This bot is made to help you have proper recipes for the food you would love to have. Team Members:" +
-                            "Avanish Kumar Singh, Brahim Ghaouthi, Rashid Aghayev,Mamoun Mourad")}>About Us</button>
-                </li>
-                <li>
-                    <button className="bar" onClick={() => addText('you can add your emails here:\n' +
-                        'Avanish Kumar Singh:avanish.singh@stud.th-deg.de \nMamoun Mourad: \nRashid Aghayev: \nBrahim Ghaouthi: brahim.ghaouthi@stud.th-deg.de')}>Contact
+                    <button className="bar" onClick={() => addText("Welcome to the Recipe Bot WebPage." +
+                        "This bot is made to help you have proper recipes for the food you would love to have.")}>
+                        Home
                     </button>
                 </li>
-                <button className="bar" id="dark_theme" onClick={props.func}>Change Mode</button>
+                <li>
+                    <button className="bar" onClick={() => addText('You can reach us here:\n' +
+                        'Avanish Singh: avanish.singh@stud.th-deg.de \nBrahim Ghaouthi: brahim.ghauothi@stud.th-deg.de \nRashid Aghayev:rashid.aghayev@stud.th-deg.de \nMamoun Mourad: mamoun.mourad@stud.th-deg.de')}>
+                        Contact Us
+                    </button>
+                </li>
+                <button className="bar" id="dark_theme" onClick={props.themeButtonClick}>
+                    Dark Mode
+                </button>
             </ul>
             <p id="text"> Welcome to the Recipe Bot WebPage.
                 This bot is made to help you have proper recipes for the food you would love to have.
-                Team Members: Avanish Kumar Singh, Brahim Ghaouthi, Rashid Aghayev,Mamoun Mourad
             </p>
         </div>
     );
 };
-
 export default Sidebar;
