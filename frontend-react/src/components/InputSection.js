@@ -23,7 +23,7 @@ const InputSection = (props) => {
 
     return (
         <div className="header_bottom" id="input">
-            <textarea id="input_section" ref={textareaRef} onKeyDown={handleKeyDown} placeholder="say HEY to start" value={value} onChange={event => setValue(event.target.value)}></textarea>
+            <textarea id="input_section" ref={textareaRef} onKeyDown={handleKeyDown} placeholder="Name food you wanna have today" value={value} onChange={event => setValue(event.target.value)}></textarea>
             <button className="send_button" type="submit" id="send" onClick={HandleSend}>Send</button>
         </div>
     );

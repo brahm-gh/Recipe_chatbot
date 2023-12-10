@@ -12,7 +12,7 @@ const ChatbotComponent = () => {
     ])
 
     const greetingMessage = {
-        info: "Hey, Welcome to FoodWhizz, What would you like to have today? Say Hey to start...",
+        info: "Hey, Welcome to FoodWhizz, What would you like to have today? Enter name of food you like to make today",
         type: "left",
         name: "FoodWhizz"
       };
@@ -28,9 +28,9 @@ const ChatbotComponent = () => {
         const newUserMessage = createMessage(value_info, value_type, "User");
         setMessages([...messages, newUserMessage]);
         
-        socket.emit('Client message',value_info)
+        socket.emit('client message',value_info)
         socket.on('bot-message',(data) =>{
-            const newBotMessage = createMessage(data, "left", "Bot");
+            const newBotMessage = createMessage(data, "left", "FoodWhizz");
             setMessages([...messages,newUserMessage,newBotMessage]);
         })
     }
