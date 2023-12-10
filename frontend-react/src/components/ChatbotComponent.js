@@ -28,7 +28,7 @@ const ChatbotComponent = () => {
         const newUserMessage = createMessage(value_info, value_type, "User");
         setMessages([...messages, newUserMessage]);
         
-        socket.emit('human',value_info)
+        socket.emit('Client message',value_info)
         socket.on('bot-message',(data) =>{
             const newBotMessage = createMessage(data, "left", "Bot");
             setMessages([...messages,newUserMessage,newBotMessage]);
