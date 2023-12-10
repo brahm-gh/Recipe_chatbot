@@ -14,7 +14,7 @@ io.on('connection', (socket) => {
     socket.on('client message', (msg) => {
         console.log('message: ' + msg);
         smartAnswer = findAnswer(msg);
-        socket.emit('bot message', smartAnswer);
+        socket.emit('bot-message', smartAnswer);
         console.log('response: ', smartAnswer);
     });
 
