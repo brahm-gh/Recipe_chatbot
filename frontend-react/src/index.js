@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Chatbot from "./components/ChatbotComponent";
+import ChatbotComponent from "./components/ChatbotComponent";
 
 ReactDOM.render(
-    <Chatbot/>,
+    <ChatbotComponent/>,
     document.getElementById('root')
 );
