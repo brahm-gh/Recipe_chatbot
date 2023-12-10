@@ -264,7 +264,7 @@ function findAnswer(query) {
         return "Have a nice day!"
        }
 
-      else if (query.toLowerCase().includes(["hello", "hi"]))  {
+      else if (query.toLowerCase().includes(["hello", "hi", "Hey"]))  {
         return "Hi! which recipe you would like me to look for?"
 
       }
