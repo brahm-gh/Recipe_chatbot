@@ -33,10 +33,11 @@ Project Structure
 
 1. Backend:
    1. In the root directory, run the following command to start the backend server:
-   'node recipe.js'
-   2. The server will start running on port 3000. You should see a message indicating that the server is listening.
+   ''' cd backend-socket.io
+       node recipe.js'''
+   1. The server will start running on port 3000. You should see a message indicating that the server is listening.
 
-2. Frontend:
+3. Frontend:
    1. Navigate to the frontend directory (or the directory containing your React app).
    2. Run the following command to start the React development server:
    'npm start'
