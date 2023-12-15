@@ -23,6 +23,7 @@ Project Structure
    1. Open a terminal in the project's root directory.
    2. Run the following command to install the necessary backend dependencies:
    ``` 
+   cd backend-socket.io
    npm install express socket.io
    ```
 
@@ -30,6 +31,7 @@ Project Structure
    1. Navigate to the frontend directory (or the directory containing your React app).
    2. Run the following command to install frontend dependencies:
    ```
+   cd frontend-react
    npm install
    ```
 
