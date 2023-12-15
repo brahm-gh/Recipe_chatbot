@@ -22,27 +22,38 @@ Project Structure
 1. Backend Dependencies:
    1. Open a terminal in the project's root directory.
    2. Run the following command to install the necessary backend dependencies:
-   'npm install express socket.io'
+   ``` 
+   npm install express socket.io
+   ```
 
 2. Frontend Dependencies:
    1. Navigate to the frontend directory (or the directory containing your React app).
    2. Run the following command to install frontend dependencies:
-   'npm install'
+   ```
+   npm install
+   ```
 
 ## Running the Application
 
 1. Backend:
    1. In the root directory, run the following command to start the backend server:
-   ''' cd backend-socket.io
-       node recipe.js'''
-   1. The server will start running on port 3000. You should see a message indicating that the server is listening.
+   ```
+   cd backend-socket.io
+   node recipe.js
+   ```
+   2. The server will start running on port 3000. You should see a message indicating that the server is listening.
 
-3. Frontend:
+2. Frontend:
    1. Navigate to the frontend directory (or the directory containing your React app).
    2. Run the following command to start the React development server:
-   'npm start'
-   3. The React app will be available in your browser at http://localhost:3000.
-
+   ```
+   cd frontend-react
+   npm start
+   ```
+   3. The React app will be available in your browser at 
+   ```
+   http://localhost:3000.
+   ```
 ## Usage
 
 1. Open your web browser and go to http://localhost:3000 to interact with the Recipe Chatbot.
