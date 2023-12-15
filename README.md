@@ -1,4 +1,4 @@
-# Recipe Chatbot
+# FoodWhizz Recipe Chatbot
 
 
 ## Overview
