@@ -3,7 +3,7 @@ import http from 'http';
 import { Server } from 'socket.io';
 import fs from 'fs';
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000; //added process.enc.PORT ||
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
@@ -13,7 +13,7 @@ let smartAnswer;
 let jsonData;
 
 try {
-    const filePath = 'recipe.json';
+    const filePath = 'Recipe.json'; //recipe => Recipe
     const data = fs.readFileSync(filePath, 'utf8');
     jsonData = JSON.parse(data);
     console.log('JSON data loaded successfully');
